@@ -3,6 +3,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.fields import CharField
 from rest_framework.serializers import ModelSerializer, Serializer
 
+from apps.models import Category
 from auth_app.models import User
 
 
@@ -31,3 +32,9 @@ class LoginSerializer(Serializer):
         else:
             raise ValidationError("Email Topilmadi !")
         return attrs
+
+
+class CategorySerializer(ModelSerializer):
+    class Meta:
+        model = Category
+        fields = "name" ,
