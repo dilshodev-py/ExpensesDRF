@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     # third part app
     'rest_framework',
-    'drf_spectacular'
+    'drf_spectacular',
+    "rest_framework.authtoken"
 ]
 
 MIDDLEWARE = [

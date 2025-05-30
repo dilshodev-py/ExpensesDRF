@@ -2,17 +2,19 @@ import requests
 
 
 class AuthUI:
-
     def register(self):
-        register_api_url = "http://172.31.176.1:8000/api/v1/auth/register"
+        register_api_url = "http://10.10.3.181:8000/api/v1/auth/register"
         data = {
             "first_name" : input("Ism: "),
             "email" : input("Email: "),
             "password" : input("password: ")
         }
         response = requests.post(register_api_url , json=data)
-        print(response)
-
+        if response.status_code == 200:
+            print("Registered !")
+        else:
+            print("\n".join(map(lambda x : x[0],response.json().values())))
+        self.main()
 
     def main(self):
         menu = """
