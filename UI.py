@@ -31,7 +31,17 @@ class AuthUI:
             print("\n".join(map(lambda x : x[0],response.json().values())))
             self.main()
     def account(self):
+
+        expenses_about_url = "http://10.10.3.181:8000/api/v1/apps/expenses/info"
+        response = requests.get(expenses_about_url , headers={"token":self.session_token})
         print("Welcome")
+        data = response.json()
+        data = f"""
+            Balance: {data.get("total")}
+            Income: {data.get("total_income")}
+            Expenses: {data.get("total_expenses")}
+        """
+        print(data)
         menu = """
             1) + Income
             2) - Expenses
@@ -39,6 +49,18 @@ class AuthUI:
             0) back
         """
         key = input(menu)
+        match key:
+            case "1":
+                self.income_add()
+
+    def show_category(self):
+        category_list_api_url = ""
+
+    def income_add(self):
+        data = {
+            "amount": input("Miqdor: $"),
+            "amount": input("Miqdor: $"),
+        }
 
     def main(self):
         menu = """
