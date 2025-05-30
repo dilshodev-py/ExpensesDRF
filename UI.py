@@ -2,6 +2,7 @@ import requests
 
 
 class AuthUI:
+    session_token = None
     def register(self):
         register_api_url = "http://10.10.3.181:8000/api/v1/auth/register"
         data = {
@@ -15,6 +16,29 @@ class AuthUI:
         else:
             print("\n".join(map(lambda x : x[0],response.json().values())))
         self.main()
+    def login(self):
+        login_api_url = "http://10.10.3.181:8000/api/v1/auth/login"
+        data = {
+            "email" : input("Email: "),
+            "password" : input("password: "),
+        }
+        response = requests.post(login_api_url , json=data)
+        if response.status_code == 200:
+            token = response.json().get("token")
+            self.session_token = token
+            self.account()
+        else:
+            print("\n".join(map(lambda x : x[0],response.json().values())))
+            self.main()
+    def account(self):
+        print("Welcome")
+        menu = """
+            1) + Income
+            2) - Expenses
+            3) History
+            0) back
+        """
+        key = input(menu)
 
     def main(self):
         menu = """

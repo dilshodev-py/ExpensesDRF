@@ -1,0 +1,44 @@
+CRUD
+QUERY, PATH PARAM
+LOGIN , REGISTER
+
+
+
+TZ:
+    Expenses
+    -------------- main ---------------
+    1) Register
+    2) Login
+    3) exit
+    >>>
+
+        1) Register:
+            first_name
+            email
+            password
+            -> main
+
+        2) Login:
+            email
+            password
+            -> account
+
+        3) Finish!
+    -------------- account -------------
+    data:
+        Total amount: $...
+        Income amount: $...
+        Expenses amount: $...
+
+    1) + Income
+    2) - Expenses
+    3) History
+    0) back
+
+
+
+
+
+
+
+

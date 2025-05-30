@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     # my app
     'auth_app',
+    'apps',
 
     # third part app
     'rest_framework',
@@ -111,12 +112,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-
 STATIC_URL = 'static/'
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 AUTH_USER_MODEL = 'auth_app.User'
 
 
@@ -127,6 +124,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # swagger
+'   DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
 
@@ -136,3 +136,4 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
